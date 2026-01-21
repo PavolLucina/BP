@@ -1,0 +1,113 @@
+(vsetko accuracy)
+ATRW:
+    MegaDescriptor-T-224
+        farebne: 0.9647058823529412 (cca 9min)
+        ciernobiele 3 channels: 0.9411764705882353 (cca 6min)
+
+rysy:
+    MegaDescriptor-T-224: (num_classes=0)
+        farebne: 0.6714285714285714  (num_classes=14, acc=0.44)
+        ciernobiele: 0.6142857142857143
+
+    MegaDescriptor-S-224: (bez center a muticropu)
+        farebne: 0.5857142857142857
+        ciernobiele:
+
+    MegaDescriptor-L-224 (bez center a muticropu)
+        farebne: 0.557
+        ciernobiele:
+
+    MegaDescriptor-L-384 (bez center a muticropu)
+        farebne: 0.6571428571428571
+        ciernobiele: 0.6
+
+    
+    MegaDescriptor-T-224    
+        Centercrop -> resize zhorsil accuracy na 0.457
+        Random Multicrop, pooling:
+            mean: 0.5142857142857142
+            max: 0.4142857142857143
+
+    MegaDescriptor-S-224
+        Centercrop -> resize zhorsil accuracy na 
+        Random Multicrop, pooling:
+            mean: 0.4714285714285714
+            max: 0.4142857142857143
+
+    MegaDescriptor-L-224    
+        Centercrop -> resize zhorsil accuracy na 
+        Random Multicrop, pooling:
+            mean: 0.5
+            max: 0.5142857142857142
+
+    MegaDescriptor-L-384
+        Centercrop -> resize zhorsil accuracy na 
+        Random Multicrop, pooling:
+            mean: 0.5571428571428572
+            max: 0.4857142857142857
+            None: 0.5
+
+
+
+MegaDescriptor-T-224 (bez center a multicropu)
+    proportion random split
+    for query_ratio in np.arange(0.2, 0.8, 0.05): 
+        [0.6714285714285714,
+        0.5882352941176471,
+        0.5523809523809524,
+        0.5378151260504201,
+        0.5597014925373134,
+        0.5526315789473685,
+        0.5393939393939394,
+        0.5409836065573771,
+        0.5175879396984925,
+        0.5046296296296297,
+        0.49130434782608695,
+        0.4796747967479675,
+        0.4372623574144487]
+    
+    0.2 test size cross validacia
+    for d_indices, q_indices in cross_val_splits:
+        [0.5714285714285714,
+        0.5588235294117647,
+        0.5625,
+        0.3770491803278688,
+        0.5172413793103449]
+
+    zvecsujuca sa DB, Q ostava 
+    for d_indices, q_indices in progressive_folds:
+        [0.2413793103448276,
+        0.27586206896551724,
+        0.3448275862068966,
+        0.41379310344827586,
+        0.41379310344827586,
+        0.43103448275862066,
+        0.41379310344827586,
+        0.4482758620689655,
+        0.4827586206896552,
+        0.5172413793103449]
+
+
+
+
+S DETEKCIOU:
+    MegaDescriptor-T-224
+        farebne: 0.543859649122807
+
+    MegaDescriptor-S-224
+        farebne: 0.6140350877192983
+
+    MegaDescriptor-L-224
+        farebne: 0.5614035087719298
+
+    MegaDescriptor-L-384
+        farebne: 0.631578947368421
+
+
+    
+    MegaDescriptor-L-384
+    Cross validacia s k=3: (niekde iba 3 image)
+        for d,q in cross_val_splits:
+            [0.5274725274725275,
+            0.5517241379310345,
+            0.4878048780487805]
